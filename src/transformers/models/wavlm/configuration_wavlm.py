@@ -14,8 +14,7 @@
 # limitations under the License.
 """ WavLM model configuration"""
 
-import functools
-import operator
+import math
 
 from ...configuration_utils import PretrainedConfig
 from ...utils import logging
@@ -336,4 +335,4 @@ class WavLMConfig(PretrainedConfig):
 
     @property
     def inputs_to_logits_ratio(self):
-        return functools.reduce(operator.mul, self.conv_stride, 1)
+        return math.prod(self.conv_stride)

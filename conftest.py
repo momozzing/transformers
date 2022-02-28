@@ -15,7 +15,6 @@
 # tests directory-specific settings - this file is run automatically
 # by pytest before any tests are run
 
-import doctest
 import sys
 import warnings
 from os.path import abspath, dirname, join
@@ -60,17 +59,3 @@ def pytest_sessionfinish(session, exitstatus):
     # If no tests are collected, pytest exists with code 5, which makes the CI fail.
     if exitstatus == 5:
         session.exitstatus = 0
-
-
-# Doctest custom flag to ignore output.
-IGNORE_RESULT = doctest.register_optionflag('IGNORE_RESULT')
-
-OutputChecker = doctest.OutputChecker
-
-class CustomOutputChecker(OutputChecker):
-    def check_output(self, want, got, optionflags):
-        if IGNORE_RESULT and optionflags:
-            return True
-        return OutputChecker.check_output(self, want, got, optionflags)
-
-doctest.OutputChecker = CustomOutputChecker

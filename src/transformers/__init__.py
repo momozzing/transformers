@@ -1753,13 +1753,6 @@ if is_tf_available():
             "TFConvBertPreTrainedModel",
         ]
     )
-    _import_structure["models.convnext"].extend(
-        [
-            "TFConvNextForImageClassification",
-            "TFConvNextModel",
-            "TFConvNextPreTrainedModel",
-        ]
-    )
     _import_structure["models.ctrl"].extend(
         [
             "TF_CTRL_PRETRAINED_MODEL_ARCHIVE_LIST",
@@ -3776,7 +3769,6 @@ if TYPE_CHECKING:
             TFConvBertModel,
             TFConvBertPreTrainedModel,
         )
-        from .models.convnext import TFConvNextForImageClassification, TFConvNextModel, TFConvNextPreTrainedModel
         from .models.ctrl import (
             TF_CTRL_PRETRAINED_MODEL_ARCHIVE_LIST,
             TFCTRLForSequenceClassification,
